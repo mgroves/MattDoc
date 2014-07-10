@@ -1,6 +1,6 @@
 ﻿namespace MattDoc
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -66,7 +66,7 @@
             this.fileList.Size = new System.Drawing.Size(307, 277);
             this.fileList.TabIndex = 3;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -74,8 +74,8 @@
             this.Controls.Add(this.fileList);
             this.Controls.Add(this.goButton);
             this.Controls.Add(this.browseButton);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "MattDoc";
             this.ResumeLayout(false);
 
         }

@@ -7,9 +7,9 @@ using PdfSharp.Pdf.IO;
 
 namespace MattDoc
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -18,14 +18,13 @@ namespace MattDoc
         {
             filePickerDialog.ShowDialog();
             if(filePickerDialog.FileNames != null && filePickerDialog.FileNames.Any())
-            {
                 filePickerDialog.FileNames.ToList().ForEach(f => fileList.Items.Add(f));
-            }
         }
 
         private void goButton_Click(object sender, EventArgs e)
         {
-            if (fileList.Items == null || fileList.Items.Count <= 0) return;
+            if (fileList.Items.Count <= 0)
+                return;
 
             var doc = new PdfDocument();
             doc.Info.Title = "Matt Doc 0.1";
@@ -34,12 +33,9 @@ namespace MattDoc
             {
                 var filename = (string) item;
                 if(filename.EndsWith(".pdf"))
-                {
                     AddPdf(filename, doc);
-                } else
-                {
+                else
                     AddImage(filename, doc);
-                }
             }
 
             var saveFile = PromptForFilenameSave();
@@ -71,12 +67,8 @@ namespace MattDoc
         private void AddPdf(string filename, PdfDocument doc)
         {
             using (var inputDoc = PdfReader.Open(filename, PdfDocumentOpenMode.Import))
-            {
                 for (int i = 0; i < inputDoc.PageCount; i++)
-                {
                     doc.AddPage(inputDoc.Pages[i]);
-                }
-            }
         }
     }
 }
